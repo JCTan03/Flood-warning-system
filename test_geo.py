@@ -22,5 +22,5 @@ def test_stations_by_distance():
     assert num == len(stations_by_distance_from) # all stations returned
 
     for i in range(1, num):
-        assert stations_by_distance_from[i-1,1] <= stations_by_distance_from[i,1] # ascending order by distance
+        assert stations_by_distance_from[i-1][1] <= stations_by_distance_from[i][1] # ascending order by distance
 
