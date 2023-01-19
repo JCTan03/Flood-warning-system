@@ -47,7 +47,7 @@ def stations_by_distance(stations, p):
         stations_by_distance_from.append(station_distance)
 
     # Sort list by distance
-    stations_by_distance_sorted = sorted_by_keys(stations_by_distance_from, 1)
+    stations_by_distance_sorted = sorted_by_key(stations_by_distance_from, 1)
 
     # Return list
     return stations_by_distance_sorted
