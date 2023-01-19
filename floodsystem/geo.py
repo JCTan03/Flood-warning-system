@@ -51,3 +51,19 @@ def stations_by_distance(stations, p):
 
     # Return list
     return stations_by_distance_sorted
+
+def stations_within_radius(stations, centre, r):
+    """
+    Returns a list of all 'stations' (type MonitoringStation) within radius 'r' (type float, in km) of a geographic coordinate 'centre' (tuple of floats)
+    """
+    # List of stations within radius r to output
+    stations_within_r = []
+    
+    # Loop through each station
+    for station in stations:
+        # Check if the distance from station to 'centre' is less than 'r'
+        if calculate_distance(station.coord, centre) <= r:
+            stations_within_r.append(station)
+    
+    # return list stations_within_r
+    return stations_within_r
