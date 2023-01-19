@@ -1,4 +1,4 @@
-# Copyright (C) 2018 Garth N. Wells
+# Copyright (C) 2018 Garth N. Wells Hihi
 #
 # SPDX-License-Identifier: MIT
 
