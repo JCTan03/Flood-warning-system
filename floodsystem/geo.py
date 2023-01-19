@@ -7,12 +7,13 @@ geographical data.
 """
 
 import random
+from haversine import haversine
 from .utils import sorted_by_key  # noqa
 
 def calculate_distance(a,b):
-    """IN PROGRESS
-
-    Calculates great-circle distance between two points on a sphere, given their longitude and latitude (coordinates)
+    """
+    Calculates great-circle distance between two points on a sphere, given their longitude and latitude (coordinates).
+    Uses Haversine library.
 
     Param:
     - a: tuple, a coordinate
@@ -20,9 +21,8 @@ def calculate_distance(a,b):
 
     """
 
-    # to implement
-
-    return random.random()
+    distance = haversine(a,b)   # in km
+    return distance
 
 def stations_by_distance(stations, p):
     """Calculate and return a list of all stations and their distances from coordinate p in tuples.
