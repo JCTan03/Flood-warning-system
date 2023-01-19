@@ -16,11 +16,11 @@ def test_stations_by_distance():
 
     # Build list of stations
     stations = build_station_list()
-    stations_by_distance = stations_by_distance(stations, (1.0, 2.0))
+    stations_by_distance_from = stations_by_distance(stations, (1.0, 2.0))
     num = len(stations)
 
-    assert num == len(stations_by_distance) # all stations returned
+    assert num == len(stations_by_distance_from) # all stations returned
 
     for i in range(1, num):
-        assert stations_by_distance[i-1,1] <= stations_by_distance[i,1] # ascending order by distance
+        assert stations_by_distance_from[i-1,1] <= stations_by_distance_from[i,1] # ascending order by distance
 
