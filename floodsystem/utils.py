@@ -27,3 +27,13 @@ def sorted_by_key(x, i, reverse=False):
         return element[i]
 
     return sorted(x, key=key, reverse=reverse)
+
+
+def get_sorted_names(stations):
+  """Return a list of the names of stations, sorted"""
+  # get names of stations
+  names = []
+  for station in stations:
+    names.append(station.name)
+  # return sorted names
+  return sorted(names)
