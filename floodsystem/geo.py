@@ -12,25 +12,9 @@ import random
 from haversine import haversine
 from .utils import sorted_by_key  # noqa
 
-def rivers_with_station(stations):
-    names_of_rivers = []
-    for station in stations:
-        names_of_rivers.append(station.river)
-    return set(names_of_rivers)
-
-
-def stations_by_river(stations):
-    d_stations_by_river = {}
-    for station in stations:
-        if station.river in d_stations_by_river:
-            d_stations_by_river[station.river].append(station.name)
-        else:
-            d_stations_by_river[station.river] = [station.name]
-    return d_stations_by_river
-
 def calculate_distance(a,b):
     """
-    Calculates great-circle distance between two points on a sphere, given their longitude and latitude (coordinates).
+    Task 1B: Calculates great-circle distance between two points on a sphere, given their longitude and latitude (coordinates).
     Uses Haversine library.
 
     Param:
@@ -43,7 +27,8 @@ def calculate_distance(a,b):
     return distance
 
 def stations_by_distance(stations, p):
-    """Calculate and return a list of all stations and their distances from coordinate p in tuples.
+    """
+    Task 1B: Calculate and return a list of all stations and their distances from coordinate p in tuples.
     List is of tuples (station, distance) and is sorted by ascending distance.
     Each station is represented as a MonitoringStation object. Each distance is represented as a float. 
 
@@ -72,7 +57,7 @@ def stations_by_distance(stations, p):
 
 def stations_within_radius(stations, centre, r):
     """
-    Returns a list of all 'stations' (type MonitoringStation) within radius 'r' (type float, in km) of a geographic coordinate 'centre' (tuple of floats)
+    Task 1C: Returns a list of all 'stations' (type MonitoringStation) within radius 'r' (type float, in km) of a geographic coordinate 'centre' (tuple of floats)
     """
     # List of stations within radius r to output
     stations_within_r = []
@@ -85,3 +70,30 @@ def stations_within_radius(stations, centre, r):
     
     # return list stations_within_r
     return stations_within_r
+
+def rivers_with_station(stations):
+    """
+    Task 1D: Returns a set of with the names of the rivers with a monitoring station.
+    """
+    names_of_rivers = []
+    # Loop through each station to see which river has a station, and add the name of that river to a list
+    for station in stations:
+        if station.river != None:
+            names_of_rivers.append(station.river)
+    # Converts the list to a set and returns it
+    return set(names_of_rivers)
+
+
+def stations_by_river(stations):
+    """
+    Task 1D: Returns a dictionary that maps river names to a list of station objects on a given river.
+    """
+    d_stations_by_river = {}
+    # If a river does not exist as a key, create a new list with the station name as the value. If the river already exists as a key, append the corresponding station to the list.  
+    for station in stations:
+        if station.river in d_stations_by_river:
+            d_stations_by_river[station.river].append(station.name)
+        else:
+            d_stations_by_river[station.river] = [station.name]
+    return d_stations_by_river
+
