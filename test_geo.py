@@ -1,6 +1,6 @@
 """Unit test for the geo module"""
 
-from floodsystem.geo import calculate_distance, stations_by_distance, stations_within_radius, rivers_with_station, stations_by_river
+from floodsystem.geo import calculate_distance, stations_by_distance, stations_within_radius, rivers_with_station, stations_by_river, rivers_by_station_number
 from floodsystem.stationdata import build_station_list
 
 
@@ -48,3 +48,11 @@ def test_stations_by_river():
     d_stations_by_river = stations_by_river(stations)
     # check that the number of keys in the dictionary is the same as the number of elements in set_rivers_with_station
     assert len(d_stations_by_river.keys()) == len(set_rivers_with_station)
+
+def test_rivers_by_station_number():
+    """Test rivers_by_station_number"""
+    stations = build_station_list()
+    list_rivers_by_station_number = rivers_by_station_number(stations, 10)
+    # check that the list is in descending order
+    for i in range (0, 9):
+        assert list_rivers_by_station_number[i][1] >= list_rivers_by_station_number[i+1][1]

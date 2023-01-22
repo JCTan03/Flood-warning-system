@@ -40,7 +40,7 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-        """checks the typical high/low range data for consistency
+        """Task 1F: checks the typical high/low range data for consistency
         return True if consistent, return False if inconsistent/unavailable
         """
         # check if data is unavailable

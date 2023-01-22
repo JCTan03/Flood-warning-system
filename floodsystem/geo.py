@@ -97,3 +97,25 @@ def stations_by_river(stations):
             d_stations_by_river[station.river] = [station.name]
     return d_stations_by_river
 
+def rivers_by_station_number(stations, N):
+    """
+    Task 1E: Returns a list of N (river name, number of stations) tuples, sorted by the number of stations
+    """
+    tuples_river_station = []
+    # Obtain a dictionary that maps river names to a list of station objects on a given river.
+    dict_rivers_station = stations_by_river(stations)
+    # Create list of tuples of (river name, number of stations)
+    for key in dict_rivers_station:
+        tuples_river_station.append((key, len(dict_rivers_station[key])))
+    # Sort list of tuples by 2nd element (number of stations) by descending order
+    tuples_river_station_sorted = sorted_by_key(tuples_river_station, 1, reverse=True)
+    # Create new list of N tuples 
+    list_N_stations = []
+    for i in range(0, N):
+        list_N_stations.append(tuples_river_station_sorted[i])
+    # If there are more rivers with the same number of stations as the N-th entry, include these rivers in the list
+    while (tuples_river_station_sorted[len(list_N_stations)][1] == list_N_stations[N-1][1]):
+        list_N_stations.append(tuples_river_station_sorted[len(list_N_stations)])
+    return list_N_stations
+
+
