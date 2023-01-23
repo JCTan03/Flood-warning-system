@@ -1,5 +1,6 @@
 from floodsystem.geo import stations_within_radius
 from floodsystem.stationdata import build_station_list
+from floodsystem.utils import get_sorted_names
 
 
 def run():
@@ -15,13 +16,8 @@ def run():
     r = 10
     stations_within_r = stations_within_radius(stations, cambridge_cc, r)
 
-    # get names of such stations
-    names = []
-    for station in stations_within_r:
-        names.append(station.name)
-
-    # print names ordered alphabetically
-    print(sorted(names))
+    # print station names ordered alphabetically
+    print(get_sorted_names(stations_within_r))
 
 if __name__ == "__main__":
     print("*** Task 1C: CUED Part IA Flood Warning System ***")

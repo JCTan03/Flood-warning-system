@@ -11,7 +11,7 @@ def run():
     # get inconsistent stations
     inconsistent_stations = inconsistent_typical_range_stations(stations)
 
-    # print stations ordered alphabetically
+    # print station names ordered alphabetically
     print(get_sorted_names(inconsistent_stations))
 
 if __name__ == "__main__":
