@@ -54,5 +54,5 @@ def test_rivers_by_station_number():
     stations = build_station_list()
     list_rivers_by_station_number = rivers_by_station_number(stations, 10)
     # check that the list is in descending order
-    for i in range (0, 9):
+    for i in range(0, 9):
         assert list_rivers_by_station_number[i][1] >= list_rivers_by_station_number[i+1][1]

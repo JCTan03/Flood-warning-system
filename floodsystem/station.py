@@ -52,10 +52,25 @@ class MonitoringStation:
         # otherwise, range is consistent
         else:
             return True
+        
+    def relative_water_level(self):
+        """Task 2B: returns the latest water level as a fraction of the typical range, 
+        i.e. a ratio of 1.0 corresponds to a level at the typical high and 
+        a ratio of 0.0 corresponds to a level at the typical low
+        """
+        # check if data is unavailable
+        if (self.typical_range == None) or (self.latest_level == None):
+            return None
+        # check if low > high (invalid data)
+        elif self.typical_range[0] > self.typical_range[1]:
+            return None
+        # otherwise, return the ratio of latest water level to the typical range
+        else:
+            return (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
 
 
 def inconsistent_typical_range_stations(stations):
-    """ returns list of stations from the input stations list (type MonitoringStation object) that have inconsistent data"""
+    """ Task 1F: returns list of stations from the input stations list (type MonitoringStation object) that have inconsistent data"""
     
     # List to return
     inconsistent_stations = []
