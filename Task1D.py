@@ -21,13 +21,9 @@ def run():
     # Obtain dictionary with rivers as keys and stations as values
     d_rivers_stations = stations_by_river(stations)
     # Sort the stations of these 3 rivers by alphabetical order
-    d_rivers_stations['River Aire'].sort()
-    d_rivers_stations['River Cam'].sort()
-    d_rivers_stations['River Thames'].sort()
-    print(d_rivers_stations['River Aire'])
-    print(d_rivers_stations['River Cam'])
-    print(d_rivers_stations['River Thames'])
-                            
+    for river in ['River Aire', 'River Cam', 'River Thames']:
+        d_rivers_stations[river].sort()
+        print(d_rivers_stations[river])
 
 if __name__ == "__main__":
     print("*** Task 1D: CUED Part IA Flood Warning System ***")
