@@ -15,12 +15,15 @@ def plot_water_levels(station, dates, levels):
     - levels: list of floats
     """
 
-    # Plot data
+    # Plot level data
     plt.plot(dates, levels)
 
     # Add low/high water level marks
-    
+    lows = [station.typical_range[0]]*len(dates)
+    highs = [station.typical_range[1]]*len(dates)
 
+    plt.plot(dates, lows)
+    plt.plot(dates, highs)
 
     # Add axis labels, rotate date labels and add plot title
     plt.xlabel('date')
