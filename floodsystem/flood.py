@@ -25,4 +25,17 @@ def stations_highest_rel_level(stations, N):
     """
     Task 2C: returns a list of the N stations (objects) at which the water level, relative to the typical range, is highest
     List sorted in descending order by relative level"""
-    # to do
+
+    # use tol = 0 to return list of all station tuples (station object, relative water level float) where there is consistent typical range
+    stations_by_rank_highest_rel_level_tuple = stations_level_over_threshold(stations, 0)
+
+    # get first N stations 
+    stations_highest_rel_level_first_N_tuple = stations_by_rank_highest_rel_level_tuple[:N]
+
+    # extract station objects from tuples
+    stations_highest_rel_level_first_N = []
+    for station_tuple in stations_highest_rel_level_first_N_tuple:
+        stations_highest_rel_level_first_N.append(station_tuple[0])
+
+    # return list
+    return stations_highest_rel_level_first_N
