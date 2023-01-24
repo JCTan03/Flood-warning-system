@@ -6,6 +6,7 @@ def run():
 
     # Build list of stations
     stations = build_station_list()
+    # Obtain latest water levels
     update_water_levels(stations)
     N = 10
     # Obtain list of tuples, where each tuple holds a station at which the latest relative water level is over tol (0.8) and the relative water level at the station

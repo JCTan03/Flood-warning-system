@@ -37,6 +37,7 @@ def stations_highest_rel_level(stations, N):
             list_stations_over_threshold.append((station.name, station.relative_water_level()))
     # Sort list of tuples by 2nd element (relative level) by descending order
     list_stations_over_threshold_sorted = sorted_by_key(list_stations_over_threshold, 1, reverse=True)
+    # Obtain list of N stations
     for i in range(0, N):
         list_N_stations_over_threshold.append(list_stations_over_threshold_sorted[i])
     return list_N_stations_over_threshold
