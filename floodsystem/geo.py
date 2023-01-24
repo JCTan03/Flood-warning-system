@@ -109,7 +109,7 @@ def rivers_by_station_number(stations, N):
         tuples_river_station.append((key, len(dict_rivers_station[key])))
     # Sort list of tuples by 2nd element (number of stations) by descending order
     tuples_river_station_sorted = sorted_by_key(tuples_river_station, 1, reverse=True)
-    # Create new list of N tuples 
+    # Create new list of N tuples
     list_N_stations = []
     for i in range(0, N):
         list_N_stations.append(tuples_river_station_sorted[i])
