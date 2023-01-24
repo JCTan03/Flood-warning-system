@@ -20,3 +20,9 @@ def stations_level_over_threshold(stations, tol):
     # Sort list of tuples by 2nd element (relative level) by descending order
     stations_over_threshold_sorted = sorted_by_key(list_stations_over_threshold, 1, reverse=True)
     return stations_over_threshold_sorted
+
+def stations_highest_rel_level(stations, N):
+    """
+    Task 2C: returns a list of the N stations (objects) at which the water level, relative to the typical range, is highest
+    List sorted in descending order by relative level"""
+    # to do
