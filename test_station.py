@@ -14,9 +14,10 @@ def test_create_monitoring_station():
     label = "some station"
     coord = (-2.0, 4.0)
     trange = (-2.3, 3.4445)
+    max_value = 5.5
     river = "River X"
     town = "My Town"
-    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    s = MonitoringStation(s_id, m_id, label, coord, trange, max_value, river, town)
 
     assert s.station_id == s_id
     assert s.measure_id == m_id
