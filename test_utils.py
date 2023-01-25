@@ -62,7 +62,7 @@ def test_get_sorted_names():
     stations = build_station_list()
 
     # get sorted names
-    names = floodsystem.utils.get_sorted_names()
+    names = floodsystem.utils.get_sorted_names(stations)
 
     # check names are valid type
     for name in names:
