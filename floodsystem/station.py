@@ -38,7 +38,7 @@ class MonitoringStation:
         d += "   town:          {}\n".format(self.town)
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
-        d += "   max:           {}".format(self.max)
+        d += "   max:           {}".format(self.max_value)
         return d
 
     def typical_range_consistent(self):
