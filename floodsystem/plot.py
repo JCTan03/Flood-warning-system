@@ -1,5 +1,6 @@
-import matplotlib.pyplot as plt
 from .analysis import polyfit
+import matplotlib
+import matplotlib.pyplot as plt
 
 
 """This module contains a collection of functions related to
@@ -47,7 +48,9 @@ def plot_water_level_with_fit(station, dates, levels, p):
     poly, d0 = polyfit(dates, levels, p)
 
     # Plot polynomial on same graph
-    plt.plot(dates, poly(dates-d0))
+    dates_float = matplotlib.dates.date2num(dates)
+    d0_float = matplotlib.dates.date2num([d0])[0]
+    plt.plot(dates, poly(dates_float-d0_float))
 
     # Add low/high water level marks
     lows = [station.typical_range[0]]*len(dates)
