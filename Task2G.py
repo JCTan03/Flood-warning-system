@@ -30,29 +30,29 @@ def run():
     # update live water levels
     update_water_levels(stations)
 
-    list_stations_over_1 = []
     # Loop through each station in list
     for station in stations:
         # Check if station has consistent typical low/high data and proper data for relative water level and max relative water level
         if (station.typical_range_consistent() == True) and (station.relative_water_level() != None) and (station.max_relative_water_level() != None):
-            # Check if relative water level is over tol
+            # Check if relative water level is over 1.0 (to get stations with moderate/high/severe risk)
             if station.relative_water_level() >= 1.0:
                 dates, levels = fetch_measure_levels(station.measure_id,
                                      dt=datetime.timedelta(days=2))
+                # After obtaining the best-fit polynomial function for the station, differentiate the polynomial function
                 diff_function = numpy.polyder(polynomial_coeff(station, dates, levels, 4))
+                # Find the value of the gradient at the current time
                 current_gradient = diff_function(0) 
+                # Obtain the value of H, which is the halfway mark between 1.0 and maximum relative water level.
                 H = (station.max_relative_water_level() - 1)/2 + 1
-                # Categorisation
-                if station.relative_water_level() >= H and current_gradient >= 0:
+                # Categorisation into the different risk warnings - if current gradient is positive (being >= 0.00001), that means water level is rising.
+                if station.relative_water_level() >= H and current_gradient > 0.00001:
                     print(station.name + ": Severe")
-                elif station.relative_water_level() >= 1.0 and station.relative_water_level() < H and current_gradient >= 0:
+                elif station.relative_water_level() >= 1.0 and station.relative_water_level() < H and current_gradient > 0.00001:
                     print(station.name + ": High")
-                elif station.relative_water_level() >= 0.7 and station.relative_water_level() < 1 and current_gradient >= 0:
+                elif station.relative_water_level() >= 0.7 and station.relative_water_level() < 1 and current_gradient >= 0.00001:
                     print(station.name + ": Moderate")
-                elif station.relative_water_level() >= 1 and current_gradient < 0:
+                elif station.relative_water_level() >= 1 and current_gradient <= 0.00001:
                     print(station.name + ": Moderate")
-                else:
-                    print(station.name + ": Low")
 
 if __name__ == "__main__":
     print("*** Task 2G: CUED Part IA Flood Warning System ***")
