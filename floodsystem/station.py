@@ -69,6 +69,19 @@ class MonitoringStation:
         # otherwise, return the ratio of latest water level to the typical range
         else:
             return (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
+        
+    def max_relative_water_level(self):
+        """Task 2G: returns the maximum water level as a fraction of the typical range, 
+        """
+        # check if data is unavailable
+        if (self.typical_range == None) or (self.max_value == None):
+            return None
+        # check if low > high (invalid data)
+        elif self.typical_range[0] > self.typical_range[1]:
+            return None
+        # otherwise, return the ratio of max water level to the typical range
+        else:
+            return (self.max_value - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
 
 
 def inconsistent_typical_range_stations(stations):

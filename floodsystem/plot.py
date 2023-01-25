@@ -67,3 +67,12 @@ def plot_water_level_with_fit(station, dates, levels, p):
 
     # Display plot
     plt.show()
+
+def polynomial_coeff(station, dates, levels, p):
+    """function that returns the best-fit polynomial coeff"""
+    
+    # Get best-fit polynomial
+    poly, d0 = polyfit(dates, levels, p)
+
+    return poly
+
