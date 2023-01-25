@@ -1,7 +1,7 @@
 """Unit test for the utils module"""
 
 import floodsystem.utils
-
+from floodsystem.stationdata import build_station_list
 
 def test_sort():
     """Test sort container by specific index"""
@@ -55,3 +55,15 @@ def test_reverse_sort():
     assert list1[0] == c
     assert list1[1] == a
     assert list1[2] == b
+
+def test_get_sorted_names():
+
+    # build station list
+    stations = build_station_list()
+
+    # get sorted names
+    names = floodsystem.utils.get_sorted_names()
+
+    # check names are valid type
+    for name in names:
+        assert type(name) is str

@@ -9,7 +9,7 @@ from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
 
 
-def test_build_station_list():
+def test_fetch_measure_levels():
 
     # Build list of stations
     stations = build_station_list()
