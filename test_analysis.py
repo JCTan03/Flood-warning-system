@@ -1,6 +1,6 @@
 """Unit test for the analysis module"""
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import numpy as np
 
 from floodsystem.analysis import polyfit
@@ -8,8 +8,8 @@ from floodsystem.analysis import polyfit
 def test_polyfit():
 
     # test data
-    dates = [datetime.today()]
-    levels = [2]
+    dates = [datetime.today(), datetime.today()-timedelta(days = 1), datetime.today()-timedelta(days=2)]
+    levels = [1,2,3]
     p = 2
 
     # call function
@@ -17,4 +17,4 @@ def test_polyfit():
 
     # check output is valid type
     assert type(poly) == np.poly1d
-    assert type(d0) == float
+    assert type(d0) == datetime
