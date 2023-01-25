@@ -10,7 +10,7 @@ for manipulating/modifying station data
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
-    def __init__(self, station_id, measure_id, label, coord, typical_range,
+    def __init__(self, station_id, measure_id, label, coord, typical_range, max_value,
                  river, town):
 
         self.station_id = station_id
@@ -24,6 +24,7 @@ class MonitoringStation:
 
         self.coord = coord
         self.typical_range = typical_range
+        self.max_value = max_value
         self.river = river
         self.town = town
 
@@ -37,6 +38,7 @@ class MonitoringStation:
         d += "   town:          {}\n".format(self.town)
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
+        d += "   max:           {}".format(self.max)
         return d
 
     def typical_range_consistent(self):

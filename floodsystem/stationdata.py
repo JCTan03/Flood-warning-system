@@ -43,6 +43,13 @@ def build_station_list(use_cache=True):
         except Exception:
             typical_range = None
 
+
+        # Attempt to extract max_value
+        try:
+            max_value = float(e['stageScale']['maxOnRecord']['value'])
+        except Exception:
+            max_value = None
+
         try:
             # Create mesure station object if all required data is
             # available, and add to list
@@ -52,6 +59,7 @@ def build_station_list(use_cache=True):
                 label=e['label'],
                 coord=(float(e['lat']), float(e['long'])),
                 typical_range=typical_range,
+                max_value = max_value,
                 river=river,
                 town=town)
             stations.append(s)
