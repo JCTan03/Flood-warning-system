@@ -1,6 +1,6 @@
 """Unit test for the analysis module"""
 
-import datetime
+from datetime import datetime
 import numpy as np
 
 from floodsystem.analysis import polyfit
@@ -8,7 +8,7 @@ from floodsystem.analysis import polyfit
 def test_polyfit():
 
     # test data
-    dates = [datetime.now()]
+    dates = [datetime.today()]
     levels = [2]
     p = 2
 
