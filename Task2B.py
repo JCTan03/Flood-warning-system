@@ -12,7 +12,7 @@ def run():
     list_station_over_tol = stations_level_over_threshold(stations, tolerance)
     # Print the name of each station at which the current relative level is over tol, with the relative level alongside the name
     for i in range(0, len(list_station_over_tol)): 
-        print("{}".format(list_station_over_tol[i][0]) + " {}".format(list_station_over_tol[i][1]))            
+        print("{}".format(list_station_over_tol[i][0].name) + " {}".format(list_station_over_tol[i][1]))            
 
 if __name__ == "__main__":
     print("*** Task 2B: CUED Part IA Flood Warning System ***")
