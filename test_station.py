@@ -24,6 +24,7 @@ def test_create_monitoring_station():
     assert s.name == label
     assert s.coord == coord
     assert s.typical_range == trange
+    assert s.max_value == max_value
     assert s.river == river
     assert s.town == town
 
@@ -48,6 +49,16 @@ def test_relative_water_level():
             # check if relative water level is greater than 1 if it is higher than the typical high
             if station.latest_level > station.typical_range[1]:
                 assert station.relative_water_level() > 1
+
+def test_max_relative_water_level():
+
+    # Build list of stations
+    stations = build_station_list()
+    update_water_levels(stations)
+    for station in stations:
+        # check if output is a float
+        if station.max_relative_water_level() != None:
+            assert type(station.max_relative_water_level()) is float
 
 def test_inconsistent_typical_range_stations():
 
